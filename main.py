@@ -33,8 +33,12 @@ migrate = Migrate()
 migrate.init_app(app, db)
 
 
-if __name__ == "__main__":
+def create_app():
     scheduler.start()
     from cron.zqsb import zqsb
     app.register_blueprint(zqsb, url_prefix="/zqsb")
-    app.run()
+
+    return app
+if __name__ == "__main__":
+    
+    create_app().run()
