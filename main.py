@@ -37,8 +37,10 @@ def create_app():
     scheduler.start()
     from cron.zqsb import zqsb
     app.register_blueprint(zqsb, url_prefix="/zqsb")
-
     return app
+
+
+application = create_app().run()
+
 if __name__ == "__main__":
-    
-    create_app().run()
+    application.run()
